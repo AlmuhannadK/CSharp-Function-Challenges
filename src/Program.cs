@@ -9,8 +9,7 @@ namespace FunctionChallenges
     {
         static void Main(string[] args)
         {
-
-
+            /*
             //Challenge 1: String and Number Processor
             Console.WriteLine("Challenge 1: String and Number Processor");
 
@@ -35,57 +34,66 @@ namespace FunctionChallenges
                 }
                 Console.WriteLine($"{sb}; {totalAmount}");
             }
-            // static dynamic StringNumberProcessor(params dynamic[] something)
-            // {
-            //     if (typeof(something) is string)
-            //     {
-            //         StringBuilder sb = new StringBuilder();
-            //         string resultString = "";
-            //         for (int i = 0; i < something.Length; i++)
-            //         {
-            //             sb.Append(something[i]);
-            //             resultString = sb.ToString();
-            //         }
-            //         return resultString;
-            //     }
-            //     else if (typeof(something) is int)
-            //     {
-            //         int total = 0;
-            //         for (int i = 0; i < something.Length; i++)
-            //         {
-            //             total += something[i];
-            //         }
-            //         return total;
-            //     }
-            //     return "";
-            // }
-
-
-
-            /*
+            */
 
             /// Challenge 2: Object Swapper
             Console.WriteLine("\nChallenge 2: Object Swapper");
             int num1 = 25, num2 = 30;
-            int num 3 = 10, num4 = 30;
+            int num3 = 10, num4 = 30;
             string str1 = "HelloWorld", str2 = "Programming";
             string str3 = "Hi", str4 = "Programming";
 
+            // testing boolean arguments
+            bool test1 = true, test2 = false;
+            SwapObjects(ref test1, ref test2); // Error: Upsupported data type
 
+            //SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
+            //SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
 
-            SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
-            SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
+            //SwapObjects(ref str1, ref str2); // Expected outcome: str1 = "Programming", str2 = "HelloWorld"
+            //SwapObjects(ref str3, ref str4); // Error: Length must be more than 5
 
-            SwapObjects(str1, str2); // Expected outcome: str1 = "Programming", str2 = "HelloWorld"
-            SwapObjects(str3, str4); // Error: Length must be more than 5
+            //SwapObjects(ref num1, ref str1); // Error: Objects must be of same types
 
-            SwapObjects(true, false); // Error: Upsupported data type
-            SwapObjects(ref num1, str1); // Error: Objects must be of same types
+            //SwapObjects(ref str1, ref str3);
 
-            Console.WriteLine($"Numbers: {num1}, {num2}");
-            Console.WriteLine($"Strings: {str1}, {str2}");
-
-            */
+            static void SwapObjects<T>(ref T value1, ref T value2)
+            {
+                if (value1 is string str1 && value2 is string str2)
+                {
+                    if (str1.Length > 5 && str2.Length > 5)
+                    {
+                        Console.WriteLine($"Before swap: value1 -> {str1}, value2 -> {str2}");
+                        string temp = str1;
+                        str1 = str2;
+                        str2 = temp;
+                        Console.WriteLine($"After swap: value1 -> {str1}, value2 -> {str2}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Length must be more than 5");
+                    }
+                }
+                else if (value1 is int num1 && value2 is int num2)
+                {
+                    if (num1 > 18 && num2 > 18)
+                    {
+                        Console.WriteLine($"Before swap: value1 -> {num1}, value2 -> {num2}");
+                        int temp = num1;
+                        num1 = num2;
+                        num2 = temp;
+                        Console.WriteLine($"After swap: value1 -> {num1}, value2 -> {num2}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error: Value must be more than 18");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unsuported type");
+                }
+            }
 
 
             /// Challenge 3: Guessing Game
