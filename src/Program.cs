@@ -1,5 +1,6 @@
 using System;
-
+using System.Net;
+using System.Net.WebSockets;
 using System.Text;
 
 namespace FunctionChallenges
@@ -8,29 +9,44 @@ namespace FunctionChallenges
     {
         static void Main(string[] args)
         {
-            // Challenge 1: String and Number Processor
-            // Console.WriteLine("Challenge 1: String and Number Processor");
 
-            // dynamic test = "hello";
 
-            // //Console.WriteLine($"Type of this variable is: {}");
-            // if (typeof(test) is string)
-            // {
+            //Challenge 1: String and Number Processor
+            Console.WriteLine("Challenge 1: String and Number Processor");
 
-            //     Console.WriteLine("string");
-            // }
+            StringNumberProcessor("Almuhannad", 44, "Khalid", 500, 8000, "Almhari", 10000);
 
+            static void StringNumberProcessor(params object[] args)
+            {
+                StringBuilder sb = new StringBuilder();
+                int totalAmount = 0;
+
+                foreach (var arg in args)
+                {
+                    if (arg is string str)
+                    {
+                        sb.Append(str);
+                        sb.Append(" ");
+                    }
+                    if (arg is int number)
+                    {
+                        totalAmount += (int)number;
+                    }
+                }
+                Console.WriteLine($"{sb}; {totalAmount}");
+            }
             // static dynamic StringNumberProcessor(params dynamic[] something)
             // {
             //     if (typeof(something) is string)
             //     {
             //         StringBuilder sb = new StringBuilder();
+            //         string resultString = "";
             //         for (int i = 0; i < something.Length; i++)
             //         {
             //             sb.Append(something[i]);
-            //             string resultString = sb.ToString();
-            //             return resultString;
+            //             resultString = sb.ToString();
             //         }
+            //         return resultString;
             //     }
             //     else if (typeof(something) is int)
             //     {
@@ -41,30 +57,22 @@ namespace FunctionChallenges
             //         }
             //         return total;
             //     }
-            //     else
-            //     {
-            //         return null;
-            //     }
+            //     return "";
             // }
 
 
 
-
-
-
-
-
-
             /*
+
             /// Challenge 2: Object Swapper
             Console.WriteLine("\nChallenge 2: Object Swapper");
             int num1 = 25, num2 = 30;
             int num 3 = 10, num4 = 30;
             string str1 = "HelloWorld", str2 = "Programming";
             string str3 = "Hi", str4 = "Programming";
-            
 
-                          
+
+
             SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
             SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
 
@@ -76,58 +84,62 @@ namespace FunctionChallenges
 
             Console.WriteLine($"Numbers: {num1}, {num2}");
             Console.WriteLine($"Strings: {str1}, {str2}");
+
             */
 
 
             /// Challenge 3: Guessing Game
-            Console.WriteLine("\nChallenge 3: Guessing Game");
 
-            void GuessingGame()
-            {
-                Random random = new Random();
-                bool playAgain = true;
-                int min = 1;
-                int max = 50;
-                int guess;
-                int number;
-                int attempts;
+            /*
+                        Console.WriteLine("\nChallenge 3: Guessing Game");
 
-                while (playAgain)
-                {
-                    guess = 0;
-                    attempts = 0;
-                    number = random.Next(min, max + 1);
-
-                    while (guess != number)
-                    {
-                        Console.WriteLine("Please enter a number between 1 - 100 :");
-                        guess = int.Parse(Console.ReadLine());
-                        Console.WriteLine($"You guesses: {guess}");
-                        if (guess > number)
+                        void GuessingGame()
                         {
-                            Console.WriteLine($"{guess} is ABOVE the number");
-                            attempts++;
+                            Random random = new Random();
+                            string? input = "";
+                            const int MIN = 1;
+                            const int MAX = 100;
+                            int guess;
+                            int number;
+                            int attempts;
 
+                            while (true)
+                            {
+                                if (input.ToLower() == "quit")
+                                {
+                                    break;
+                                }
+                                number = random.Next(MIN, MAX + 1);
+                                Console.WriteLine("Welcome to the Guessing Game!");
+                                guess = 0;
+                                attempts = 0;
+                                while (guess != number)
+                                {
+                                    Console.WriteLine("Please enter a number between 1 - 100 :");
+                                    guess = int.Parse(Console.ReadLine());
+                                    Console.WriteLine($"Your guess is: {guess}");
+                                    if (guess > number)
+                                    {
+                                        Console.WriteLine($"{guess} is ABOVE the number");
+                                        attempts++;
+
+                                    }
+                                    else if (guess < number)
+                                    {
+                                        Console.WriteLine($"{guess} is BELOW the number");
+                                        attempts++;
+                                    }
+                                    if (guess == number)
+                                    {
+                                        Console.WriteLine($"Wow you guessed it right! the number was {number}. Attempts made: {attempts}");
+                                        Console.WriteLine($"Wanna play again? (or type \"Quit\" to exit.)");
+                                        input = Console.ReadLine();
+                                    }
+                                }
+                            }
                         }
-                        else if (guess < number)
-                        {
-                            Console.WriteLine($"{guess} is BELOW the number");
-                            attempts++;
-                        }
-                        if (guess == number)
-                        {
-                            Console.WriteLine($"Wow you guessed it right! the number was {number}. Attempts made: {attempts}");
-                            playAgain = false;
-                        }
-                    }
-
-
-
-                }
-            }
-
-            GuessingGame(); // Expected outcome: User input until the correct number is guessed or user inputs `Quit`
-
+                        GuessingGame();
+            */
 
 
             /*
