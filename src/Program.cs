@@ -1,8 +1,3 @@
-using System;
-using System.Net;
-using System.Net.WebSockets;
-using System.Text;
-
 namespace FunctionChallenges
 {
     class Program
@@ -36,6 +31,7 @@ namespace FunctionChallenges
             }
             */
 
+            /*
             /// Challenge 2: Object Swapper
             Console.WriteLine("\nChallenge 2: Object Swapper");
             int num1 = 25, num2 = 30;
@@ -94,10 +90,9 @@ namespace FunctionChallenges
                     Console.WriteLine("Error: Unsuported type");
                 }
             }
-
+            */
 
             /// Challenge 3: Guessing Game
-
             /*
                         Console.WriteLine("\nChallenge 3: Guessing Game");
 
@@ -149,14 +144,30 @@ namespace FunctionChallenges
                         GuessingGame();
             */
 
+            // Challenge 4: Simple Word Reversal
+            Console.WriteLine("Challenge 4: Simple Word Reversal");
+            string sentence1 = "This is the original sentence!";
+            string sentence2 = "What is the meaning of this?";
 
-            /*
-            /// Challenge 4: Simple Word Reversal
-            Console.WriteLine("\nChallenge 4: Simple Word Reversal");
-            string sentence = "This is the original sentence!";
-            string reversed = ReverseWords(sentence);
-            Console.WriteLine(reversed); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
-            */
+            // tests
+            string reversed1 = ReverseWords(sentence1);
+            Console.WriteLine(reversed1); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
+            string reversed2 = ReverseWords(sentence2);
+            Console.WriteLine(reversed2);
+
+            // method
+            static string ReverseWords(string str)
+            {
+                List<string> resultString = [];
+                string[] sentence = str.Split();
+
+                foreach (string item in sentence)
+                {
+                    string combinedReverse = string.Join("", item.Reverse());
+                    resultString.Add(combinedReverse);
+                }
+                return string.Join(" ", resultString);
+            }
         }
     }
 }
