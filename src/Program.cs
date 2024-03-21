@@ -1,10 +1,12 @@
+using System.Text;
+
 namespace FunctionChallenges
 {
     class Program
     {
         static void Main(string[] args)
         {
-            /*
+
             //Challenge 1: String and Number Processor
             Console.WriteLine("Challenge 1: String and Number Processor");
 
@@ -29,7 +31,7 @@ namespace FunctionChallenges
                 }
                 Console.WriteLine($"{sb}; {totalAmount}");
             }
-            */
+
 
             /*
             /// Challenge 2: Object Swapper
@@ -40,14 +42,14 @@ namespace FunctionChallenges
             string str3 = "Hi", str4 = "Programming";
 
             // testing boolean arguments
-            bool test1 = true, test2 = false;
-            SwapObjects(ref test1, ref test2); // Error: Upsupported data type
+            //bool test1 = true, test2 = false;
+            //SwapObjects(ref test1, ref test2); // Error: Upsupported data type
 
-            //SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
-            //SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
+            // SwapObjects(ref num1, ref num2); // Expected outcome: num1 = 30, num2 = 25  
+            // SwapObjects(ref num3, ref num4); // Error: Value must be more than 18
 
-            //SwapObjects(ref str1, ref str2); // Expected outcome: str1 = "Programming", str2 = "HelloWorld"
-            //SwapObjects(ref str3, ref str4); // Error: Length must be more than 5
+            SwapObjects(ref str1, ref str2); // Expected outcome: str1 = "Programming", str2 = "HelloWorld"
+            SwapObjects(ref str3, ref str4); // Error: Length must be more than 5
 
             //SwapObjects(ref num1, ref str1); // Error: Objects must be of same types
 
@@ -144,30 +146,30 @@ namespace FunctionChallenges
                         GuessingGame();
             */
 
-            // Challenge 4: Simple Word Reversal
-            Console.WriteLine("Challenge 4: Simple Word Reversal");
-            string sentence1 = "This is the original sentence!";
-            string sentence2 = "What is the meaning of this?";
+            // // Challenge 4: Simple Word Reversal
+            // Console.WriteLine("Challenge 4: Simple Word Reversal");
+            // string sentence1 = "This is the original sentence!";
+            // string sentence2 = "What is the meaning of this?";
 
-            // tests
-            string reversed1 = ReverseWords(sentence1);
-            Console.WriteLine(reversed1); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
-            string reversed2 = ReverseWords(sentence2);
-            Console.WriteLine(reversed2);
+            // // tests
+            // string reversed1 = ReverseWords(sentence1);
+            // Console.WriteLine(reversed1); // Expected outcome: "sihT si eht lanigiro !ecnetnes"
+            // string reversed2 = ReverseWords(sentence2);
+            // Console.WriteLine(reversed2);
 
-            // method
-            static string ReverseWords(string str)
-            {
-                List<string> resultString = [];
-                string[] sentence = str.Split();
+            // // method
+            // static string ReverseWords(string str)
+            // {
+            //     List<string> resultString = [];
+            //     string[] sentence = str.Split();
 
-                foreach (string item in sentence)
-                {
-                    string combinedReverse = string.Join("", item.Reverse());
-                    resultString.Add(combinedReverse);
-                }
-                return string.Join(" ", resultString);
-            }
+            //     foreach (string item in sentence)
+            //     {
+            //         string combinedReverse = string.Join("", item.Reverse());
+            //         resultString.Add(combinedReverse);
+            //     }
+            //     return string.Join(" ", resultString);
+            // }
         }
     }
 }
